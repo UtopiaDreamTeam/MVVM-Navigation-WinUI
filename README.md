@@ -31,10 +31,14 @@ It also supports Nested Views.
     <Page.DataContext>
         <viewmodel:RootPageViewModel/>
     </Page.DataContext>
-    <Frame Content="{Binding ChildPageNavigation.PageContainer,Mode=OneWay}"/>
+    <Frame Content="{Binding ChildPageNavigation.ViewModel,Converter={StaticResource Vm2V}}"/>
 </Page>
-```
 
+```
+also include the converter
+```xml
+<converters:ViewModelToView x:Key="Vm2V"/>
+```
 2.Create the ViewModel for the root Page
 
 ```csharp
