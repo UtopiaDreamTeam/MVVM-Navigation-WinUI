@@ -1,13 +1,9 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace MvvmNavigation.ViewModel
 {
-    internal class Page2ViewModel:BasePageViewModel
+    public class Page2ViewModel:BasePageViewModel
     {
         public Page2ViewModel()
         {

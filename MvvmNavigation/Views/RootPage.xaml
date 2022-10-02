@@ -10,5 +10,5 @@
     <Page.DataContext>
         <viewmodel:RootPageViewModel/>
     </Page.DataContext>
-    <Frame Content="{Binding ChildPageNavigation.PageContainer,Mode=OneWay}"/>
+    <Frame Content="{Binding ChildPageNavigation.ViewModel,Converter={StaticResource Vm2V}}"/>
 </Page>

@@ -1,13 +1,8 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Toolkit.Mvvm.Input;
 
 namespace MvvmNavigation.ViewModel
 {
-    internal class Page1ViewModel : BasePageViewModel
+    public class Page1ViewModel : BasePageViewModel
     {
         public RelayCommand GoToPage2Command { get; }
         public RelayCommand GoToPage1_1Command { get; }

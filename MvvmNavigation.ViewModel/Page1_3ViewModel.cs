@@ -1,9 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-
-namespace MvvmNavigation.ViewModel
+﻿namespace MvvmNavigation.ViewModel
 {
-    internal class Page1_3ViewModel:BasePageViewModel
+    public class Page1_3ViewModel:BasePageViewModel
     {
         private string text;
         public Page1_3ViewModel()

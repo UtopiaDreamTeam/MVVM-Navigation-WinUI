@@ -1,15 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml.Controls;
-using MvvmNavigation.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
-namespace MvvmNavigation
+namespace MvvmNavigation.ViewModel
 {
-    internal class PageNavigation:ObservableObject
+    public class PageNavigation:ObservableObject
     {
         private readonly HistoryStack<BasePageViewModel> historyStates;
         private readonly HistoryStack<Type> historyTypes;
@@ -45,18 +39,7 @@ namespace MvvmNavigation
         {
             SetProperty(ref viewModel, value,nameof(ViewModel));
             viewModel.ParentPageNavigation = this;
-            PageContainer = Converters.ViewModelToView.Convert(viewModel);
-            PageContainer.DataContext = viewModel;
         }
-
-        private Page pageContainer;
-
-        public Page PageContainer
-        {
-            get => pageContainer;
-            set => SetProperty(ref pageContainer, value);
-        }
-
         public void GoBack()
         {
             if (backNavigationCompatiblity == BackwardNavigationCompatibleMode.StoreStates

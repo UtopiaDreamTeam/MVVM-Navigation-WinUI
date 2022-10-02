@@ -4,13 +4,10 @@ using MvvmNavigation.ViewModel;
 using MvvmNavigation.Views;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MvvmNavigation.Converters
 {
-    internal class ViewModelToView
+    internal class ViewModelToView:IValueConverter
     {
         private static readonly Dictionary<Type, Type> pairs = new Dictionary<Type, Type>()
         {
@@ -21,12 +18,18 @@ namespace MvvmNavigation.Converters
             {typeof(Page1_4ViewModel),typeof(Page1_4)},
             {typeof(Page2ViewModel),typeof(Page2)},
         };
-        public static Page Convert(BasePageViewModel value)
+
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
             pairs.TryGetValue(value.GetType(), out var page);
-            var x=Activator.CreateInstance(page);
-            return (Page)x;
+            Page x = (Page)Activator.CreateInstance(page);
+            x.DataContext = value;
+            return x;
         }
 
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

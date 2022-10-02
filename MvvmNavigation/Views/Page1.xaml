@@ -17,6 +17,7 @@
             <Button Command="{Binding GoToPage2Command}" Content="Go To Page 2"/>
             <Button Command="{Binding GoBackCommand}" Content="Go Back"/>
         </StackPanel>
-        <Frame VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,40,0,0" Content="{Binding ChildPageNavigation.PageContainer}"/>
+        <Frame x:Name="PageFrame" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,40,0,0" 
+               Content="{Binding ChildPageNavigation.ViewModel,Converter={StaticResource Vm2V}}"/>
     </Grid>
 </Page>

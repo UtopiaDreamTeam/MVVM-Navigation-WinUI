@@ -47,6 +47,9 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MvvmNavigation.ViewModel\MvvmNavigation.ViewModel.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\Page1_4.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
