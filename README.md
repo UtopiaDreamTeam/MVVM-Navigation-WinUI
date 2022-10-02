@@ -4,11 +4,14 @@ It uses ViewModel First approch
 
 It has 3 mode of backward navigation :
 
--None
+-None(Default mode)
 
 -StoreTypes (ViewModels are not stored only their types and then are inistited)
 
 -StoreStates (ViewModels are stored)
+
+
+It supports max number for Backward Navigation
 
 It also supports Nested Views.
 
