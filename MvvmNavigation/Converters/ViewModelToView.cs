@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MvvmNavigation.Converters
 {
-    internal class DisplayPageToView
+    internal class ViewModelToView
     {
         private static readonly Dictionary<Type, Type> pairs = new Dictionary<Type, Type>()
         {

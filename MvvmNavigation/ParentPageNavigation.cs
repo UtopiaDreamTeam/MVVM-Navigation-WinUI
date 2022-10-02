@@ -45,7 +45,7 @@ namespace MvvmNavigation
         {
             SetProperty(ref viewModel, value,nameof(ViewModel));
             viewModel.ParentPageNavigation = this;
-            PageContainer = Converters.DisplayPageToView.Convert(viewModel);
+            PageContainer = Converters.ViewModelToView.Convert(viewModel);
             PageContainer.DataContext = viewModel;
         }
 
