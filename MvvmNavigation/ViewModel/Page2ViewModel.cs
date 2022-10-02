@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MvvmNavigation.ViewModel
 {
-    internal class Page2ViewModel:IPageViewModel
+    internal class Page2ViewModel:BasePageViewModel
     {
         public Page2ViewModel()
         {

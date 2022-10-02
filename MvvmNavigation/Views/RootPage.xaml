@@ -7,11 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodel="using:MvvmNavigation.ViewModel" xmlns:converters="using:MvvmNavigation.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Page.Resources>
-        <converters:DisplayPageToView x:Key="VmToView"/>
-    </Page.Resources>
     <Page.DataContext>
         <viewmodel:RootPageViewModel/>
     </Page.DataContext>
-    <Frame Content="{Binding ParentPageNavigation.PageContainer,Mode=OneWay}"/>
+    <Frame Content="{Binding ChildPageNavigation.PageContainer,Mode=OneWay}"/>
 </Page>

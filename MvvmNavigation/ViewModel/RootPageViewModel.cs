@@ -13,8 +13,8 @@ namespace MvvmNavigation.ViewModel
 
         public RootPageViewModel()
         {
-            ParentPageNavigation = new ParentPageNavigation(new Page2ViewModel());
+            ChildPageNavigation = new PageNavigation(new Page2ViewModel());
         }
-        public ParentPageNavigation ParentPageNavigation { get; }
+        public PageNavigation ChildPageNavigation { get; }
     }
 }

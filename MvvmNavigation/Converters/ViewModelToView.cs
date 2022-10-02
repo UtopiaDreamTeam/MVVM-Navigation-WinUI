@@ -21,7 +21,7 @@ namespace MvvmNavigation.Converters
             {typeof(Page1_4ViewModel),typeof(Page1_4)},
             {typeof(Page2ViewModel),typeof(Page2)},
         };
-        public static Page Convert(IPageViewModel value)
+        public static Page Convert(BasePageViewModel value)
         {
             pairs.TryGetValue(value.GetType(), out var page);
             var x=Activator.CreateInstance(page);

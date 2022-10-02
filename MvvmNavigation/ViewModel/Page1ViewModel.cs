@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MvvmNavigation.ViewModel
 {
-    internal class Page1ViewModel : IPageViewModel
+    internal class Page1ViewModel : BasePageViewModel
     {
         public RelayCommand GoToPage2Command { get; }
         public RelayCommand GoToPage1_1Command { get; }
@@ -15,9 +15,9 @@ namespace MvvmNavigation.ViewModel
         public RelayCommand GoToPage1_3Command { get; }
         public RelayCommand GoToPage1_4Command { get; }
         public RelayCommand GoBackCommand { get; }
-        public Page1ViewModel(IPageViewModel viewModel)
+        public Page1ViewModel(BasePageViewModel viewModel)
         {
-            ChildPageNavigation = new ParentPageNavigation(viewModel,BackwardNavigationCompatibleMode.StoreTypes);
+            ChildPageNavigation = new PageNavigation(viewModel,BackwardNavigationCompatibleMode.StoreTypes);
             ChildPageNavigation.PropertyChanged += ChildPageNavigation_PropertyChanged;
             GoBackCommand = new RelayCommand(ChildPageNavigation.GoBack,
                 ChildPageNavigation.CanGoBack);
@@ -28,8 +28,7 @@ namespace MvvmNavigation.ViewModel
                 ()=>ChildPageNavigation.ViewModel.GetType() != typeof(Page1_2ViewModel));
             GoToPage1_3Command = new RelayCommand(() =>
             {
-                var randomNumber = Random.Shared.Next(1, 200).ToString();
-                ChildPageNavigation.ViewModel = new Page1_3ViewModel(randomNumber);
+                ChildPageNavigation.ViewModel = new Page1_3ViewModel();
             },
                 () => ChildPageNavigation.ViewModel.GetType() != typeof(Page1_3ViewModel));
             GoToPage1_4Command = new RelayCommand(() => ChildPageNavigation.ViewModel = new Page1_4ViewModel(),
@@ -48,6 +47,6 @@ namespace MvvmNavigation.ViewModel
             }
         }
 
-        public ParentPageNavigation ChildPageNavigation { get; }
+        public PageNavigation ChildPageNavigation { get; }
     }
 }

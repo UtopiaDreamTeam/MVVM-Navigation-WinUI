@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace MvvmNavigation
 {
-    internal class ParentPageNavigation:ObservableObject
+    internal class PageNavigation:ObservableObject
     {
-        private readonly HistoryStack<IPageViewModel> historyStates;
+        private readonly HistoryStack<BasePageViewModel> historyStates;
         private readonly HistoryStack<Type> historyTypes;
         private readonly BackwardNavigationCompatibleMode backNavigationCompatiblity;
-        private IPageViewModel viewModel;
-        public ParentPageNavigation(IPageViewModel viewModel,BackwardNavigationCompatibleMode mode=BackwardNavigationCompatibleMode.None,int maxHistory=5)
+        private BasePageViewModel viewModel;
+        public PageNavigation(BasePageViewModel viewModel,BackwardNavigationCompatibleMode mode=BackwardNavigationCompatibleMode.None,int maxHistory=5)
         {
             backNavigationCompatiblity = mode;
             if (mode==BackwardNavigationCompatibleMode.StoreStates)
-                historyStates = new HistoryStack<IPageViewModel>(maxHistory);
+                historyStates = new HistoryStack<BasePageViewModel>(maxHistory);
             else if (mode == BackwardNavigationCompatibleMode.StoreTypes)
                 historyTypes = new HistoryStack<Type>(maxHistory);
             ViewModel = viewModel;
         }
 
-        public IPageViewModel ViewModel
+        public BasePageViewModel ViewModel
         {
             get => viewModel;
             set
@@ -41,7 +41,7 @@ namespace MvvmNavigation
             }
         }
 
-        private void ChangeViewModel(IPageViewModel value)
+        private void ChangeViewModel(BasePageViewModel value)
         {
             SetProperty(ref viewModel, value,nameof(ViewModel));
             viewModel.ParentPageNavigation = this;
@@ -64,7 +64,7 @@ namespace MvvmNavigation
                 ChangeViewModel(oldVm);
             if (backNavigationCompatiblity == BackwardNavigationCompatibleMode.StoreTypes
                 && historyTypes.TryPop(out var oldVmType))
-                ChangeViewModel((IPageViewModel)Activator.CreateInstance(oldVmType));
+                ChangeViewModel((BasePageViewModel)Activator.CreateInstance(oldVmType));
         }
         public bool CanGoBack()
         {

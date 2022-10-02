@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MvvmNavigation.ViewModel
 {
-    internal class Page1_2ViewModel:IPageViewModel
+    internal class Page1_2ViewModel:BasePageViewModel
     {
     }
 }
